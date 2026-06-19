@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://maccontalder.github.io/portal-fishingmaster-com/sitemap.xml

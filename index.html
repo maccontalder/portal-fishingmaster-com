@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>捕鱼达人介绍 | 探索休闲游戏的乐趣</title>
+    <style>
+        /* 基础重置 & 排版 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', Helvetica, Arial, sans-serif;
+            background-color: #f9f5ef;
+            color: #2c2b28;
+            line-height: 1.7;
+            padding: 2rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page {
+            max-width: 840px;
+            width: 100%;
+            background-color: #fffffffa;
+            border-radius: 36px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        /* 主视觉区 */
+        .hero {
+            text-align: center;
+            margin-bottom: 2.8rem;
+            border-bottom: 1px solid #e6ded5;
+            padding-bottom: 2rem;
+        }
+        .hero-icon {
+            font-size: 3.2rem;
+            display: inline-block;
+            background: #f3efe9;
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            margin-bottom: 0.75rem;
+            letter-spacing: 2px;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 450;
+            letter-spacing: 1px;
+            color: #3b3732;
+            margin-bottom: 0.5rem;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #6b6460;
+            max-width: 600px;
+            margin: 0.5rem auto 0;
+            line-height: 1.6;
+        }
+
+        /* 卡片区域 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        .card {
+            background: #fcf9f5;
+            border-radius: 28px;
+            padding: 1.6rem 1.8rem;
+            border: 1px solid #ece3db;
+            transition: box-shadow 0.15s;
+        }
+        .card:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+        }
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #3e3a35;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card h2::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 20px;
+            background: #c1b3a6;
+            border-radius: 20px;
+        }
+        .card p {
+            margin-bottom: 0.4rem;
+            color: #4b4641;
+        }
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 引用 / 提示框 */
+        .insight-box {
+            background: #f2ece4;
+            border-left: 4px solid #b7a898;
+            padding: 1.2rem 1.6rem;
+            border-radius: 20px 8px 8px 20px;
+            margin: 2.2rem 0;
+            font-size: 0.98rem;
+            color: #3d3935;
+        }
+        .insight-box strong {
+            font-weight: 550;
+            color: #2d2a26;
+        }
+
+        /* 自然段落区 */
+        .natural-section {
+            margin: 2rem 0 1.8rem;
+        }
+        .natural-section p {
+            margin-bottom: 1rem;
+        }
+        .natural-section a {
+            color: #6d5e51;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #ccbfb2;
+            font-weight: 450;
+            transition: color 0.2s;
+        }
+        .natural-section a:hover {
+            color: #3e342c;
+            text-decoration-color: #9a897b;
+        }
+
+        /* FAQ 摘要 (折叠风格 / 简约) */
+        .faq-summary {
+            margin-top: 2.5rem;
+            border-top: 1px dashed #dad1c7;
+            padding-top: 2rem;
+        }
+        .faq-summary h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #3b3732;
+            margin-bottom: 1rem;
+        }
+        .faq-item {
+            margin-bottom: 0.9rem;
+        }
+        .faq-question {
+            font-weight: 480;
+            color: #4d4742;
+            display: inline-block;
+            background: #f0eae2;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+        .faq-answer {
+            color: #5c554f;
+            padding-left: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        /* 响应式 */
+        @media (min-width: 600px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .page {
+                padding: 3rem 2.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .page {
+                padding: 1.6rem 1rem;
+                border-radius: 24px;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero-icon {
+                font-size: 2.4rem;
+                padding: 0.4rem 1rem;
+            }
+        }
+
+        /* footer 轻点缀 */
+        .soft-footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: #9b918a;
+            font-size: 0.85rem;
+            border-top: 1px solid #ebe3db;
+            padding-top: 1.8rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 主视觉 / Hero -->
+    <div class="hero">
+        <div class="hero-icon">🐟 🎣</div>
+        <h1>捕鱼达人 · 闲趣漫谈</h1>
+        <p>从一片蔚蓝的光影出发，与节奏和分数无关，只关乎一种轻快的沉浸。这里不只有收网与瞄准，更有观察与回味。</p>
+    </div>
+
+    <!-- 信息卡片：用途 & 适合人群 -->
+    <div class="card-grid">
+        <div class="card">
+            <h2>适合安放什么</h2>
+            <p>碎片时间里的柔焦片刻——等一杯咖啡、地铁两站路、临睡前的五分钟。<br>不需要复杂的规则说明，指尖跟随游鱼的方向，自然就松弛下来。</p>
+            <p>它也是一种数字陪伴，安静、有色彩、有简单的反馈，却不侵占你的注意力。</p>
+        </div>
+        <div class="card">
+            <h2>谁会更喜欢</h2>
+            <p>想要短暂逃离信息洪流的人，偏爱温和反馈而非激烈竞争的朋友。<br>如果你曾喜欢过“瞄准—收获”这样质朴的循环，却不想要压力，这里或许正好。</p>
+            <p>也适合与家人一起体验——没有复杂的教程，画面直观，节奏自控。</p>
+        </div>
+    </div>
+
+    <!-- 引用/提示框 (温和语气) -->
+    <div class="insight-box">
+        <strong>📌 一个小观察：</strong> 许多玩家在捕捉特定鱼种时，会自发形成“等一等，看准再出手”的节奏，这恰好与呼吸放松的间隙重合。游戏设计的乐趣有时藏在用户自己的节奏里。
+    </div>
+
+    <!-- 自然链接段落: 从主题展开，嵌入“捕鱼达人”链接 -->
+    <div class="natural-section">
+        <p>无论是怀念早年间那种简单明亮的街机感觉，还是只想找一个视觉舒适、反馈柔和的“指尖池塘”，<a href="https://portal-fishingmaster.com">捕鱼达人</a>这类题材总能提供一个低门槛的入口。它不要求你成为高手，也不刻意制造焦虑——你只需要跟随鱼群游弋的轨迹，决定什么时候按下那个键。</p>
+        <p>这个页面的存在，是想把“捕鱼”这个主题从单纯的得分框架里拉出来，放在更日常的语境中。它可以是雨天的背景音，也可以是等待时的短暂出神。许多老玩家发现，多年后再打开类似的画面，手感依然熟悉，但心境已经不同——不再追求满屏特效，反而更在意光影和水波。</p>
+        <p>如果你从未试过，或者很久没有点开，不妨在今天温和地重新认识它一次。节奏由你，没有标准玩法。</p>
+    </div>
+
+    <!-- 又一个卡片式结构 (场景描述) -->
+    <div class="card" style="margin: 1.2rem 0 1rem; background: #fcf7f0;">
+        <h2>一些自然场景</h2>
+        <p>🌿 午后犯困时，打开音效，听水泡声和收网的轻微震动，有点像数字版的白噪音。</p>
+        <p>☕ 与朋友闲聊时，顺手放一局，话题中断了也不尴尬，目光可以落在游鱼上。</p>
+        <p>📖 读完几页书之后，让手指做一点简单的活动，画面明亮却不刺眼。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-summary">
+        <h3>一些你可能想知道的 · 短问答</h3>
+        <div class="faq-item">
+            <div class="faq-question">需要联网吗？</div>
+            <div class="faq-answer">部分版本支持离线游玩，核心机制在本地运行，网络主要用于可选排行榜或商店刷新。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">有难度门槛吗？</div>
+            <div class="faq-answer">几乎没有。瞄准与点击是全部操作，鱼群移动有一定随机性，但不会惩罚失误。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">适合孩子吗？</div>
+            <div class="faq-answer">画面卡通且没有血腥或恐怖元素，简单易懂，很多家长反馈孩子很享受找鱼的乐趣。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">为什么叫“捕鱼达人”？</div>
+            <div class="faq-answer">这个名称本身带有一种轻松自信的意味——每个人都可以成为自己节奏里的“达人”。</div>
+        </div>
+    </div>
+
+    <!-- 柔和收尾 -->
+    <div class="soft-footer">
+        <span>—— 以温和的方式，重新打量一片数字水域 ——</span><br>
+        <span style="opacity: 0.5;">&copy; 介绍页 · 内容独立 仅供参考</span>
+    </div>
+</div>
+</body>
+</html>
